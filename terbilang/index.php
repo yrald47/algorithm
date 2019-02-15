@@ -196,7 +196,7 @@
 			}
 			if(bagi[1][1] == undefined && bagi[1][2] == "Satu  ")
 				bagi[1][2] = "Se";
-			console.log(bagi[1][2]);
+			// console.log(bagi[1][2]);
 
 			for(var k = maxIndeks; k >= 0; k--){
 				for(var l = 0; l < 3; l++){
@@ -204,7 +204,10 @@
 						terbilang = terbilang + bagi[k][l];
 					}
 				}
-				terbilang = terbilang + besaran[k] + " ";
+				if(bagi[1][2] == "Se")
+					terbilang = terbilang + besaran[k].toLowerCase() + " ";
+				else
+					terbilang = terbilang + besaran[k] + " ";
 			}
 			textareaTerbilang.value = terbilang.replace(/  /g, " ");
 		}

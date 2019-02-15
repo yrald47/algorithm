@@ -153,7 +153,6 @@
 			var textareaTerbilang = document.getElementById("terbilang");
 			var nominal = input.value;
 			var count = nominal.length;
-			// console.log(nominal[0]);
 			var j = 0;
 			var limit = 2;
 			var maxIndeks = (count % 3 > 0) ? Math.floor(count/3) : Math.floor(count/3) - 1;
@@ -194,22 +193,23 @@
 					tiga = [];
 				}
 			}
-			if(bagi[1][1] == undefined && bagi[1][2] == "Satu  ")
-				bagi[1][2] = "Se";
-			// console.log(bagi[1][2]);
+			
+			console.log(bagi);
 
 			for(var k = maxIndeks; k >= 0; k--){
+				var seribu = false;
 				for(var l = 0; l < 3; l++){
 					if(bagi[k][l] != undefined){
 						terbilang = terbilang + bagi[k][l];
 					}
 				}
-				if(bagi[1][2] == "Se")
-					terbilang = terbilang + besaran[k].toLowerCase() + " ";
-				else
-					terbilang = terbilang + besaran[k] + " ";
+				terbilang = terbilang + besaran[k] + " ";
 			}
-			textareaTerbilang.value = terbilang.replace(/  /g, " ");
+			terbilang = terbilang.replace(/  /g, " ");
+			if(terbilang.substr(0, 9) == "Satu Ribu")
+				terbilang = terbilang.replace("Satu Ribu", "Seribu");
+			
+			textareaTerbilang.value = terbilang;
 		}
 	</script>
 </body>

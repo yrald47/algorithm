@@ -194,7 +194,9 @@
 					tiga = [];
 				}
 			}
-			// console.log(bagi);
+			if(bagi[1][1] == undefined && bagi[1][2] == "Satu  ")
+				bagi[1][2] = "Se";
+			console.log(bagi[1][2]);
 
 			for(var k = maxIndeks; k >= 0; k--){
 				for(var l = 0; l < 3; l++){
@@ -204,8 +206,7 @@
 				}
 				terbilang = terbilang + besaran[k] + " ";
 			}
-			terbilang = terbilang.replace(/  /g, " ");
-			textareaTerbilang.value = terbilang.replace(/Satu Ribu/g, "Seribu");
+			textareaTerbilang.value = terbilang.replace(/  /g, " ");
 		}
 	</script>
 </body>

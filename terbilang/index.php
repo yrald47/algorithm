@@ -198,12 +198,17 @@
 
 			for(var k = maxIndeks; k >= 0; k--){
 				var seribu = false;
+				var x = 0;
 				for(var l = 0; l < 3; l++){
 					if(bagi[k][l] != undefined){
+						if(bagi[k][l] == " ")
+							x = x + 1;
+
 						terbilang = terbilang + bagi[k][l];
 					}
 				}
-				terbilang = terbilang + besaran[k] + " ";
+				if(x < 3)
+					terbilang = terbilang + besaran[k] + " ";
 			}
 			terbilang = terbilang.replace(/  /g, " ");
 			if(terbilang.substr(0, 9) == "Satu Ribu")

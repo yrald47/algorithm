@@ -26,7 +26,7 @@
 
 				<label class="label-input100" for="nominal">Nominal</label>
 				<div class="wrap-input100 validate-input" data-validate="Nominal is Required">
-					<input id="nominal" class="input100" type="text" name="nominal" placeholder="Input Nominal Di Sini" onkeyup="terbilangA()">
+					<input id="nominal" class="input100" type="number" name="nominal" placeholder="Input Nominal Di Sini" onkeyup="terbilangA()">
 					<span class="focus-input100"></span>
 				</div>
 				<label class="label-input100" for="message">Terbilang</label>
@@ -53,7 +53,7 @@
 							Address
 						</span>
 						<span class="txt2">
-							Jalan Pasar Taluk, Kenagarian Taluk Kecamatan Batang Kapas Kebupaten Pesisir Selatan
+							Jalan Pasar Taluk, Kenagarian Taluk Kecamatan Batang Kapas Kabupaten Pesisir Selatan
 						</span>
 					</div>
 				</div>
@@ -160,10 +160,10 @@
 				if(nominal[i] != "0")
 					if(limit == 1 && nominal[i] == "1"){
 						if(nominal[i+1] == "0"){
-							tiga[limit] = "Sepuluh";
+							tiga[limit] = "Sepuluh ";
 						}
 						else if(nominal[i+1] == "1"){
-							tiga[limit] = "Sebelas";
+							tiga[limit] = "Sebelas ";
 						}
 						else{
 							tiga[limit] = bilangan[nominal[i+1]] + " Belas ";	

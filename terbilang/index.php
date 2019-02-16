@@ -210,10 +210,9 @@
 				if(x < 3)
 					terbilang = terbilang + besaran[k] + " ";
 			}
-			terbilang = terbilang.replace(/  /g, " ");
+			terbilang = terbilang.replace(/\s+/g, " ");
 			if(terbilang.substr(0, 9) == "Satu Ribu")
 				terbilang = terbilang.replace("Satu Ribu", "Seribu");
-			
 			textareaTerbilang.value = terbilang;
 		}
 	</script>

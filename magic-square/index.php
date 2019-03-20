@@ -31,7 +31,7 @@
 				</form>
 		  	</div>
 		  	<div class="card-footer" background-color="red">
-		  		<p><b>Note : </b>Input that is too large may make the display less neat</p>
+		  		<p><b>Note : </b>Input that is too large (bigger than 20) may make the display less neat</p>
 		  	</div>
 		</div>
 		<hr>
@@ -140,19 +140,19 @@
 										</div>
 									<?php
 									}
-								for($j = 0; $j < $input; $j++){
-									?>
-									<tr class="row100">
-									<?php
-									for($k = 0; $k < $input; $k++){
+									for($j = 0; $j < $input; $j++){
 										?>
-										<td class="column100 column<?php echo $k+1; ?>" data-column="column<?php echo $k+1; ?>" align="center" ><?php echo $square[$j][$k] ?></td>
+										<tr class="row100">
+										<?php
+										for($k = 0; $k < $input; $k++){
+											?>
+											<td class="column100 column<?php echo $k+1; ?>" data-column="column<?php echo $k+1; ?>" align="center" ><?php echo $square[$j][$k] ?></td>
+											<?php
+										}
+										?>
+										</tr>
 										<?php
 									}
-									?>
-									</tr>
-									<?php
-								}
 								}
 							}
 							?>
@@ -170,6 +170,7 @@
 		var input = document.getElementsByName('input')[0];
 		var value = "<?php echo $_POST['input']; ?>";
 		input.setAttribute('value', value);
+		input.focus();
 	</script>
 </body>
 </html>

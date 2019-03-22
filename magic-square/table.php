@@ -1,181 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>TABLE</title>
-	<style type="text/css" media="screen" src="css/googleFontAPI.css">	
-	</style>
-	<style type="text/css" media="screen">
-		/*
-		Side Navigation Menu V2, RWD
-		===================
-		License:
-		https://goo.gl/EaUPrt
-		===================
-		Author: @PableraShow
-		*/
+<?php 
+$square = array();
+$input = 10;
 
-	@charset "UTF-8";
-	body {
-	  font-family: 'Open Sans', sans-serif;
-	  font-weight: 300;
-	  line-height: 1.42em;
-	  color:#A7A1AE;
-	  background-color:#1F2739;
+$r = 0;
+$c = ($input - 2) / 4; //or (($input/2)-1)/2
+for($i = 1; $i <= $input/2 * $input/2; $i++){
+	$square[$r][$c] = $i;
+	$r_tmp = $r - 1 < 0 ? ($input/2) - 1 : $r - 1;
+	$c_tmp = $c + 1 >= $input/2 ? 0 : $c + 1;
+	if(!empty($square[$r_tmp][$c_tmp])){
+		$r = $r + 1;
 	}
-
-	h1 {
-	  font-size:3em; 
-	  font-weight: 300;
-	  line-height:1em;
-	  text-align: center;
-	  color: #4DC3FA;
+	else{
+		$r = $r_tmp;
+		$c = $c_tmp;
 	}
+}
 
-	h2 {
-	  font-size:1em; 
-	  font-weight: 300;
-	  text-align: center;
-	  display: block;
-	  line-height:1em;
-	  padding-bottom: 2em;
-	  color: #FB667A;
+$r = $input/2;
+$c = (($input - 2) / 4) + ($input / 2);
+for($i = ($input/2 * $input/2)+1; $i <= ($input/2 * $input/2)*2; $i++){
+	$square[$r][$c] = $i;
+	$r_tmp = $r - 1 < $input/2 ? $input - 1 : $r - 1;
+	$c_tmp = $c + 1 >= $input ? $input/2 : $c + 1;
+	if(!empty($square[$r_tmp][$c_tmp])){
+		$r = $r + 1;
 	}
-
-	h2 a {
-	  font-weight: 700;
-	  text-transform: uppercase;
-	  color: #FB667A;
-	  text-decoration: none;
+	else{
+		$r = $r_tmp;
+		$c = $c_tmp;
 	}
+}
 
-	.blue { color: #185875; }
-	.yellow { color: #FFF842; }
-
-	.container th h1 {
-		  font-weight: bold;
-		  font-size: 1em;
-	  text-align: left;
-	  color: #185875;
+$r = 0;
+$c = (($input - 2) / 4) + ($input / 2);
+for($i = ($input*$input/2)+1; $i <= ($input/2 * $input/2)*3; $i++){
+	$square[$r][$c] = $i;
+	$r_tmp = $r - 1 < 0 ? ($input/2) - 1 : $r - 1;
+	$c_tmp = $c + 1 >= $input ? $input/2 : $c + 1;
+	if(!empty($square[$r_tmp][$c_tmp])){
+		$r = $r + 1;
 	}
-
-	.container td {
-		  font-weight: normal;
-		  font-size: 1em;
-	  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-		   -moz-box-shadow: 0 2px 2px -2px #0E1119;
-		        box-shadow: 0 2px 2px -2px #0E1119;
+	else{
+		$r = $r_tmp;
+		$c = $c_tmp;
 	}
+}
 
-	.container {
-		  text-align: left;
-		  overflow: hidden;
-		  width: 80%;
-		  margin: 0 auto;
-	  display: table;
-	  padding: 0 0 8em 0;
+$r = $input/2;
+$c = ($input - 2) / 4;
+for($i = ($input/2 * $input/2)*3+1; $i <= ($input/2 * $input/2)*4; $i++){
+	$square[$r][$c] = $i;
+	$r_tmp = $r - 1 < $input/2 ? $input - 1 : $r - 1;
+	$c_tmp = $c + 1 >= $input/2 ? 0 : $c + 1;
+	if(!empty($square[$r_tmp][$c_tmp])){
+		$r = $r + 1;
 	}
-
-	.container td, .container th {
-		  padding-bottom: 2%;
-		  padding-top: 2%;
-	  padding-left:2%;  
+	else{
+		$r = $r_tmp;
+		$c = $c_tmp;
 	}
+}
 
-	/* Background-color of the odd rows */
-	.container tr:nth-child(odd) {
-		  background-color: #323C50;
+//tahap swap
+$m = ($input-2)/4;
+for($i = 0; $i < $input/2; $i++){
+	for($j = 0; $j < $input; $j++){
+		if(($j < $m || $j > $input - $m) && $i != $m){
+			$val_tmp = $square[$i][$j];
+			$square[$i][$j] = $square[$i + ($input/2)][$j];
+			$square[$i + ($input/2)][$j] = $val_tmp;
+		}
 	}
+}
+$val_temp = $square[$m][$m];
+$square[$m][$m] = $square[$m + ($input/2)][$m];
+$square[$m + ($input/2)][$m] = $val_temp;
 
-	/* Background-color of the even rows */
-	.container tr:nth-child(even) {
-		  background-color: #2C3446;
+for($x = 0; $x < $input; $x++){
+	for($y = 0; $y < $input; $y++){
+		echo $square[$x][$y]." ";
 	}
-
-	.container th {
-		  background-color: #1F2739;
-	}
-
-	.container td:first-child { color: #FB667A; }
-
-	.container tr:hover {
-	   background-color: #464A52;
-	-webkit-box-shadow: 0 6px 6px -6px #0E1119;
-		   -moz-box-shadow: 0 6px 6px -6px #0E1119;
-		        box-shadow: 0 6px 6px -6px #0E1119;
-	}
-
-	.container td:hover {
-	  background-color: #FFF842;
-	  color: #403E10;
-	  font-weight: bold;
-	  
-	  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-	  transform: translate3d(6px, -6px, 0);
-	  
-	  transition-delay: 0s;
-		  transition-duration: 0.4s;
-		  transition-property: all;
-	  transition-timing-function: line;
-	}
-
-	@media (max-width: 800px) {
-	.container td:nth-child(4),
-	.container th:nth-child(4) { display: none; }
-	}
-	</style>
-</head>
-<body>
-
-</body>
-</html>
-<h1><span class="blue">&lt;</span>Table<span class="blue">&gt;</span> <span class="yellow">Responsive</pan></h1>
-<h2>Created with love by <a href="http://pablogarciafernandez.com" target="_blank">Pablo García Fernández</a></h2>
-
-<table class="container">
-	<thead>
-		<tr>
-			<th><h1>Sites</h1></th>
-			<th><h1>Views</h1></th>
-			<th><h1>Clicks</h1></th>
-			<th><h1>Average</h1></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Google</td>
-			<td>9518</td>
-			<td>6369</td>
-			<td>01:32:50</td>
-		</tr>
-		<tr>
-			<td>Twitter</td>
-			<td>7326</td>
-			<td>10437</td>
-			<td>00:51:22</td>
-		</tr>
-		<tr>
-			<td>Amazon</td>
-			<td>4162</td>
-			<td>5327</td>
-			<td>00:24:34</td>
-		</tr>
-    <tr>
-			<td>LinkedIn</td>
-			<td>3654</td>
-			<td>2961</td>
-			<td>00:12:10</td>
-		</tr>
-    <tr>
-			<td>CodePen</td>
-			<td>2002</td>
-			<td>4135</td>
-			<td>00:46:19</td>
-		</tr>
-    <tr>
-			<td>GitHub</td>
-			<td>4623</td>
-			<td>3486</td>
-			<td>00:31:52</td>
-		</tr>
-	</tbody>
-</table>
+	echo "<br>";
+}
+// print("<pre>".print_r($square, true)."</pre>");
+?>
